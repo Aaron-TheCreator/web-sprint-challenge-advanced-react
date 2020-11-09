@@ -7,13 +7,14 @@ import CheckoutForm from "./CheckoutForm";
 test("form header renders", () => {
     render(<CheckoutForm />);
 
-    const headerTxt = screen.getByText(/checkoutform/i);
+    const headerTxt = screen.getByText(/checkout form/i);
 
     expect(headerTxt).toBeTruthy();
 });
 
 // First Name:, Last NAme, Address:, City:, State:, Zip:
 test("form shows success message on submit with form details", async () => {
+    render(<CheckoutForm />);
     const fNameInput = screen.getByLabelText(/first name/i);
     const lNameInput = screen.getByLabelText(/last name/i);
     const addrInput = screen.getByLabelText(/address/i);
@@ -39,7 +40,7 @@ test("form shows success message on submit with form details", async () => {
 
     expect(fNameInput).toHaveValue('Aaron');
     expect(lNameInput).toHaveValue('Burns');
-    expect(addrInput).toHaveValue('1100 Cludwalk Canyon Drive');
+    expect(addrInput).toHaveValue('1100 Cloudwalk Canyon Drive');
     expect(cityInput).toHaveValue('Chula Vista');
     expect(stateInput).toHaveValue('California');
     expect(zipInput).toHaveValue('91911');
@@ -49,6 +50,12 @@ test("form shows success message on submit with form details", async () => {
     const formDisplay = await screen.findByTestId("successMessage");
 
     expect(formDisplay).toHaveTextContent("Aaron");
+    expect(formDisplay).toHaveTextContent("Burns");
+    expect(formDisplay).toHaveTextContent("Cloudwalk");
+    expect(formDisplay).toHaveTextContent("Chula");
+    expect(formDisplay).toHaveTextContent("California");
+    expect(formDisplay).toHaveTextContent("91911");
+
     
 
 
