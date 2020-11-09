@@ -28,5 +28,10 @@ export const useForm = (key, initialValues, callback) => {
         });
     };
 
-    const
-}
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        callback();
+    };
+
+    return [values, handleChanges, handleSubmit];
+};
